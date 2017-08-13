@@ -3,6 +3,7 @@
 	<head>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="../css/styles.css">
 	</head>
 
 	<body>
@@ -15,8 +16,15 @@
 			</div>
 		</header>
 
-		<section class="line-graph">
-			<svg id="visualisation" width="1000" height="500"></svg> 
+		<section class="graphs">
+			<div class="line-graph single-graph">
+				<svg id="line-visualisation" width="500" height="500"></svg> 
+				<div>Release Date</div>
+			</div>
+			<div class="bar-graph single-graph">
+				<div id="bar-visualisation"></div> 
+				<div>User Types</div>
+			</div>
 		</section>
 
 		<script src="../js/main.js"></script>
