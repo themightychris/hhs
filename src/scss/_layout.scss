@@ -29,3 +29,16 @@
 .label {
     font-size: 13px;
 }
+
+.tab-content {
+	border: 1px solid #ddd;
+	border-top: none;
+
+	h3 {
+		margin-top: 0;
+	}
+}
+
+.tab-pane {
+	padding: 20px;
+}
