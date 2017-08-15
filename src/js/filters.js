@@ -1,0 +1,3 @@
+//datepicker
+$('.input-daterange').datepicker({
+});
