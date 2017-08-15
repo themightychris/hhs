@@ -54,54 +54,60 @@
 				<div class="tab-content">
 				 	<div class="tab-pane active" id="1">
 	          			<h3>Single</h3>
-	          			<div class="dropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    User Type Jail
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Action</a></li>
-						    <li><a href="#">Another action</a></li>
-						    <li><a href="#">Something else here</a></li>
-						    <li role="separator" class="divider"></li>
-						    <li><a href="#">Separated link</a></li>
-						  </ul>
+	          			<div class="col-md-4">
+		          			<div class="dropdown">
+							 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    User Type Jail
+									<span class="caret"></span>
+							 	</button>
+							 	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								    <li><a href="#">Action</a></li>
+								    <li><a href="#">Another action</a></li>
+								    <li><a href="#">Something else here</a></li>
+								    <li role="separator" class="divider"></li>
+								    <li><a href="#">Separated link</a></li>
+							  	</ul>
+							</div>
+							<div class="dropdown">
+							 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							    User Type Homelessness
+									<span class="caret"></span>
+							  	</button>
+							  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+								    <li><a href="#">Action</a></li>
+								    <li><a href="#">Another action</a></li>
+								    <li><a href="#">Something else here</a></li>
+								    <li role="separator" class="divider"></li>
+								    <li><a href="#">Separated link</a></li>
+							  	</ul>
+							</div>
 						</div>
-						<div class="dropdown">
-						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-						    User Type Homelessness
-						    <span class="caret"></span>
-						  </button>
-						  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-						    <li><a href="#">Action</a></li>
-						    <li><a href="#">Another action</a></li>
-						    <li><a href="#">Something else here</a></li>
-						    <li role="separator" class="divider"></li>
-						    <li><a href="#">Separated link</a></li>
-						  </ul>
-						</div>
-						Disabled:
-						<div class="checkbox">
-						 <label><input type="checkbox" value="">Yes</label>
-						</div>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">No</label>
-						</div>
+						<div class="col-md-4">
+							Disabled:
+							<div class="checkbox">
+							 <label><input type="checkbox" value="">Yes</label>
+							</div>
+							<div class="checkbox">
+							  <label><input type="checkbox" value="">No</label>
+							</div>
 
-						Housing Status:
-						<div class="checkbox">
-						 <label><input type="checkbox" value="">Has used shelter</label>
+							Housing Status:
+							<div class="checkbox">
+							 <label><input type="checkbox" value="">Has used shelter</label>
+							</div>
+							<div class="checkbox">
+							  <label><input type="checkbox" value="">History of Unsheltered Homelessness</label>
+							</div>
+							<div class="checkbox">
+							  <label><input type="checkbox" value="">Has Used Housing Programs</label>
+							</div>
 						</div>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">History of Unsheltered Homelessness</label>
-						</div>
-						<div class="checkbox">
-						  <label><input type="checkbox" value="">Has Used Housing Programs</label>
-						</div>
-						<div class="input-daterange input-group" id="datepicker">
-						    <input type="text" class="input-sm form-control" name="start" />
-						    <span class="input-group-addon">to</span>
-						    <input type="text" class="input-sm form-control" name="end" />
+						<div class="col-md-4">
+							<div class="input-daterange input-group" id="datepicker">
+							    <input type="text" class="input-sm form-control" name="start" />
+							    <span class="input-group-addon">to</span>
+							    <input type="text" class="input-sm form-control" name="end" />
+							</div>
 						</div>
 					</div>
 					<div class="tab-pane" id="2">
@@ -121,7 +127,7 @@
 
 		<section class="table panel-body">
 			<div class="form-group">
-			    <label for="Sort:"></label>
+			    <label for="Sort:">Sort:</label>
 			    <input type="text" value="Chronic Homelessness: Yes, Unsheltered History: Yes" data-role="tagsinput" class="form-control" />
 			  </div>
 			<table class="table table-bordered">

@@ -6,6 +6,16 @@
 	display: inline-block;
 }
 
+.tab-pane {
+	&.active {
+		@include clearfix;
+	}
+
+	.dropdown:first-of-type {
+		margin-bottom: 20px;
+	}
+}
+
 .tabs {
 	margin-top: 30px;
 }
