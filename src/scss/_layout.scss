@@ -1,66 +1,51 @@
 header {
 	.login {
-		margin-top: 30px;
-		padding-right: 0;
-		text-align: right;
+		margin-top: 2em;
 
 		span {
-			padding-right: 15px;
+			margin-right: 15px;
 		}
 	}
 }
 
-.graphs {
-	border: 2px solid black;
-}
-
-.single-graph {
-	display: inline-block;
-}
-
-.tab-pane {
-	&.active {
-		@include clearfix;
-	}
-
-	.dropdown:first-of-type {
+#filters {
+	.btn-group {
 		margin-bottom: 20px;
 	}
-}
 
-.tabs {
-	margin-top: 30px;
-}
+	.control-label {
+		margin-top: 7px;
+		padding: 0;
+		text-align: right;
+	}
 
-//to be moved later
+	.radio,
+	.checkbox {
+		margin-top: 7px;
 
-.bar {
-    fill: #5f89ad;
-}
+		.control-label {
+			margin-top: 10px;
+		}
 
-.axis {
-    font-size: 13px;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    display: none;
-}
-
-.label {
-    font-size: 13px;
-}
-
-.tab-content {
-	border: 1px solid #ddd;
-	border-top: none;
-
-	h3 {
-		margin-top: 0;
+		+ .radio,
+		+ .checkbox {
+			margin-top: -1px;
+		}
 	}
 }
 
-.tab-pane {
-	padding: 20px;
+.well {
+	hr {
+		border-color: #ddd;
+	}
 }
+
+// .row {
+// 	background-color: rgba(red, .1);
+// 	outline: 1px solid red;
+// }
+
+// [class*="col"] {
+// 	background-color: rgba(blue, .1);
+// 	outline: 1px solid blue;
+// }

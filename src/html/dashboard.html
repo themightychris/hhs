@@ -1,158 +1,218 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" />
+
+		<title>Dashboard</title>
+
+		<link rel="stylesheet" href="../css/styles.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<header class="container">
+			<div class="pull-right login">
+				<span>Hello, name</span>
+				<button class="btn btn-sm btn-default">Log out</button>
+			</div>
+			<h1>Jail: Client Tracking Tool</h1>
+		</header>
+
+		<section class="container" id="filters">
+			<div class="well">
+				<div class="btn-group btn-group-flex" role="group" id="filter-buttons" aria-label="Filters">
+					<button type="button" class="btn btn-default" data-preset="single">Single</button>
+					<button type="button" class="btn btn-default" data-preset="family">Family</button>
+					<button type="button" class="btn btn-default" data-preset="veteran">Veteran</button>
+					<button type="button" class="btn btn-default" data-preset="youth">Youth</button>
+					<button type="button" class="btn btn-default" data-preset="chronic">Chronic</button>
+					<button type="button" class="btn btn-default" data-preset="reset">Reset</button>
+				</div>
+
+				<hr>
+
+				<form class="row">
+					<div class="col-md-2">
+						<div class="form-group">
+							<label class="control-label" for="user_type_jail">User type jail</label>
+							<select class="form-control" name="user_type_jail" id="user_type_jail">
+								<option disabled selected></option>
+								<option value="medium_heavy">Medium to Heavy</option>
+								<option value="frequent">Frequent</option>
+								<option value="super">Super</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label" for="user_type_homeless">User type homeless</label>
+							<select class="form-control" name="user_type_homeless" id="user_type_homeless">
+								<option disabled selected></option>
+								<option value="medium_heavy">Medium to Heavy</option>
+								<option value="frequent">Frequent</option>
+								<option value="super">Super</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="col-md-5">
+						<div class="row">
+							<div class="form-group col-md-6">
+								<div class="row">
+									<label class="control-label col-md-8">Disabled:</label>
+									<div class="col-md-4">
+										<div class="radio">
+											<label>
+												<input name="disabled" type="radio" value="true">
+												Yes
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input name="disabled" type="radio" value="false">
+												No
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<div class="row">
+									<label class="control-label col-md-6">Chronic:</label>
+									<div class="col-md-6">
+										<div class="radio">
+											<label>
+												<input name="chronic" type="radio" value="true">
+												Yes
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input name="chronic" type="radio" value="false">
+												No
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<div class="row">
+									<label class="control-label col-md-8">Family status:</label>
+									<div class="col-md-4">
+										<div class="radio">
+											<label>
+												<input name="family_status" type="radio" value="true">
+												Yes
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input name="family_status" type="radio" value="false">
+												No
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<div class="row">
+									<label class="control-label col-md-6">Veteran:</label>
+									<div class="col-md-6">
+										<div class="radio">
+											<label>
+												<input name="veteran" type="radio" value="true">
+												Yes
+											</label>
+										</div>
+										<div class="radio">
+											<label>
+												<input name="veteran" type="radio" value="false">
+												No
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-5">
+						<div class="form-group row">
+							<label class="control-label col-md-3">Housing status:</label>
+							<div class="col-md-9">
+								<div class="checkbox">
+									<label>
+										<input name="housing_status" type="checkbox" value="has_used_shelter">
+										Has used shelter
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input name="housing_status" type="checkbox" value="history_unsheltered">
+										History of unsheltered homelessness
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input name="housing_status" type="checkbox" value="has_used_programs">
+										Has used housing programs
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="control-label col-md-3">Release date</label>
+							<div class="col-md-9">
+								<div class="input-daterange input-group col-md-9" id="datepicker">
+									<input type="text" class="form-control" name="release_date_start" />
+									<span class="input-group-addon">to</span>
+									<input type="text" class="form-control" name="release_date_end" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="form-group">
+				<label for="Sort:">Sort:</label>
+				<input type="text" value="Chronic Homelessness: Yes, Unsheltered History: Yes" data-role="tagsinput" class="form-control" />
+			</div>
+		</section>
+
+		<section class="container-fluid">
+			<table class="table table-striped" id="clients">
+				<thead>
+					<tr>
+						<th>HMIS ID</th>
+						<th>Name</th>
+						<th>Jail Release Date</th>
+						<th>User Type Jail</th>
+						<th>User Type Homeless</th>
+						<th>VI-SPDAT</th>
+						<th>Chronic Homeless</th>
+						<th>Unsheltered History</th>
+						<th>Family Status</th>
+						<th>Veteran</th>
+						<th>Disabled</th>
+						<th>Disabling Condition</th>
+					</tr>
+				</thead>
+				<tbody>
+
+				</tbody>
+			</table>
+		</section>
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" />
-		
-		<link rel="stylesheet" href="../css/styles.css"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-	</head>
-
-	<body class="container">
-		<header class="clearfix">
-			<h1 class="col-md-6">Jail: Client Tracking Tool</h1>
-			<div class="col-md-6 login">
-				<span>Hello, name</span>
-				<button>Log out</button>
-			</div>
-		</header>
-
-		<section class="tabs">
-			<div class="container">	
-				<ul class="nav nav-tabs">
-					<li class="active"><a  href="#1" data-toggle="tab">Filters</a>
-					</li>
-					<li><a href="#2" data-toggle="tab">Family</a>
-					</li>
-					<li><a href="#3" data-toggle="tab">Veteran</a>
-					</li><li><a href="#4" data-toggle="tab">Youth</a>
-					</li><li><a href="#5" data-toggle="tab">Chronic</a>
-					</li>
-				</ul>
-
-				<div class="tab-content">
-				 	<div class="tab-pane active" id="1">
-	          			<div class="col-md-4">
-		          			<div class="dropdown">
-							 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    User Type Jail
-									<span class="caret"></span>
-							 	</button>
-							 	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								    <li><a href="#">Action</a></li>
-								    <li><a href="#">Another action</a></li>
-								    <li><a href="#">Something else here</a></li>
-								    <li role="separator" class="divider"></li>
-								    <li><a href="#">Separated link</a></li>
-							  	</ul>
-							</div>
-							<div class="dropdown">
-							 	<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-							    User Type Homelessness
-									<span class="caret"></span>
-							  	</button>
-							  	<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								    <li><a href="#">Action</a></li>
-								    <li><a href="#">Another action</a></li>
-								    <li><a href="#">Something else here</a></li>
-								    <li role="separator" class="divider"></li>
-								    <li><a href="#">Separated link</a></li>
-							  	</ul>
-							</div>
-						</div>
-						<div class="col-md-4">
-							Disabled:
-							<div class="checkbox">
-							 <label><input type="checkbox" value="">Yes</label>
-							</div>
-							<div class="checkbox">
-							  <label><input type="checkbox" value="">No</label>
-							</div>
-
-							Housing Status:
-							<div class="checkbox">
-							 <label><input type="checkbox" value="">Has used shelter</label>
-							</div>
-							<div class="checkbox">
-							  <label><input type="checkbox" value="">History of Unsheltered Homelessness</label>
-							</div>
-							<div class="checkbox">
-							  <label><input type="checkbox" value="">Has Used Housing Programs</label>
-							</div>
-						</div>
-						<div class="col-md-4">
-							<div class="input-daterange input-group" id="datepicker">
-							    <input type="text" class="input-sm form-control" name="start" />
-							    <span class="input-group-addon">to</span>
-							    <input type="text" class="input-sm form-control" name="end" />
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane" id="2">
-	          			<h3>Family</h3>
-					</div>
-	        		<div class="tab-pane" id="3">
-	          			<h3>Veteran</h3>
-					</div><div class="tab-pane" id="4">
-	          			<h3>Youth</h3>
-					</div><div class="tab-pane" id="5">
-	          			<h3>Chronic</h3>
-					</div>
-				</div>
-				<!-- end tab contents -->
-	  		</div>
-		</section>
-
-		<section class="table panel-body">
-			<div class="form-group">
-			    <label for="Sort:">Sort:</label>
-			    <input type="text" value="Chronic Homelessness: Yes, Unsheltered History: Yes" data-role="tagsinput" class="form-control" />
-			  </div>
-			<table class="table table-bordered">
-			  <thead>
-			    <tr>
-			      <th>#</th>
-			      <th>First Name</th>
-			      <th>Last Name</th>
-			      <th>Username</th>
-			    </tr>
-			  </thead>
-			  <tbody>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@mdo</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">2</th>
-			      <td>Mark</td>
-			      <td>Otto</td>
-			      <td>@TwBootstrap</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">3</th>
-			      <td>Jacob</td>
-			      <td>Thornton</td>
-			      <td>@fat</td>
-			    </tr>
-			    <tr>
-			      <th scope="row">4</th>
-			      <td colspan="2">Larry the Bird</td>
-			      <td>@twitter</td>
-			    </tr>
-			  </tbody>
-			</table>
-		</section>
 
 		<script src="../js/main.js"></script>
 
