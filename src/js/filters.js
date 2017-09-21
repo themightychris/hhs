@@ -36,8 +36,8 @@ var usePreset = function(preset) {
 
         // radio
         } else if ($input.is('[type="radio"]')) {
-            $input.prop('checked', false)
-                .filter('[value="' + value + '"]').prop('checked', true);
+            $input.prop('checked', false);
+            $input.filter('[value="' + value + '"]').prop('checked', true);
 
         // text
         } else if ($input.is('input')) {
@@ -45,57 +45,140 @@ var usePreset = function(preset) {
 
         }
     }
+
+    checkConfig($('form'));
 }
 
-var headingClasses = $('th').map(function(i, el) {
-    return el.textContent.replace(/\s/g, '-').toLowerCase();
-}).get();
+$('input').on('change', function() {
+    checkConfig($(this).closest('form'));
+});
 
-var getHeading = function(i) {
-    return
-}
+var checkConfig = function(form) {
+    var values = $(form).serializeArray(),
+        newConfig = {},
+        dt = clientsDataTable.DataTable();
 
-var makeCells = function(dataArray) {
-    var cellsString = '';
+    values.map(function(item, i) {
+        newConfig[item.name] = item.value;
+    });
 
-    for (var i=0; i<dataArray.length; i++) {
-        cellsString += '<td class="cell-' + headingClasses[i] + '">' + (dataArray[i] || '&mdash;') + '</td>';
+    dt.columns().search('');
+
+    for (field in newConfig) {
+        dt.column(field + ':name').search(newConfig[field]);
     }
 
-    return cellsString;
-}
-
-var makeTrueFalseIcon = function(boolean) {
-    return '<i class="fa fa-lg fa-' + (boolean ? 'check-circle' : 'circle-thin text-muted') + '"></i>';
-}
-
-// fill table
-var clients = clients.Clients.clients;
-for (var i=0; i<clients.length; i++) {
-    var client = clients[i];
-
-    $('#clients tbody').append([
-        '<tr>',
-            makeCells([
-                client.clientId,
-                [client.firstName, client.middleName, client.lastName, client.nameSuffix].join(' '),
-                client.dob, // TODO what format is this? and use correct field
-                enums['userType'][client.userTypeJail],
-                enums['userType'][client.userTypeHomeless],
-                client.viSpdat,
-                makeTrueFalseIcon(client.chronicHomeless),
-                makeTrueFalseIcon(client.unshelteredHistory),
-                makeTrueFalseIcon(client.familyStatus),
-                makeTrueFalseIcon(client.veteran),
-                makeTrueFalseIcon(client.disabled),
-                client.disablingCondition
-            ]),
-        '</tr>'
-    ].join(''))
-}
-
-// enable sorting
-var options = {
-    valueNames: headingClasses
+    dt.draw();
 };
-var clientList = new List('clients');
+
+// DataTables
+
+var booleanIcon = function(data, type, full, meta) {
+    if (data === true || data === false) {
+        output = '<i class="fa text-muted fa-' + (data ? 'check' : 'circle-thin') + '"></i>';
+    } else {
+        output = '&mdash;'
+    }
+
+    return '<div class="text-center">' + output + '</div>';
+}
+
+var guidRenderer = function(data, type, full, meta) {
+    if (type === 'display') {
+        return '<span class="text-nowrap" data-toggle="tooltip" title="' + data + '">&hellip;' + data.substr(-8) + '</span>';
+    }
+}
+
+var clientsDataTable = $('#clients').one('draw.dt', function() {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+clientsDataTable.DataTable({
+    data: clients,
+    columnDefs: [
+        {
+            targets: '_all',
+            defaultContent: '&mdash;',
+            name: 'foo'
+        },
+        {
+            targets: [0, 1],
+            render: guidRenderer
+        },
+        {
+            targets: [ 3, 4, 6, 7, 8, 10, 11, 12 ],
+            render: {
+                "display": booleanIcon,
+            }
+        }
+    ],
+    columns: [
+        {
+            data: 'hmis_id',
+            name: 'hmis_id',
+            title: 'HMIS'
+        },
+        {
+            data: 'cjmis_id',
+            name: 'cjmis_id',
+            title: 'CJMIS'
+        },
+        {
+            data: 'name',
+            name: 'name',
+            title: 'Name'
+        },
+        {
+            data: 'currently_homeless_shelter',
+            name: 'currently_homeless_shelter',
+            title: 'Homeless'
+        },
+        {
+            data: 'currently_incarcerated',
+            name: 'currently_incarcerated',
+            title: 'In&nbsp;Jail',
+            className: 'text-nowrap'
+        },
+        {
+            data: 'jail_release_date',
+            name: 'jail_release_date',
+            title: 'Release Date',
+            className: 'text-nowrap'
+        },
+        {
+            data: 'history_unsheltered',
+            name: 'history_unsheltered',
+            title: 'History'
+        },
+        {
+            data: 'chronic_status',
+            name: 'chronic_status',
+            title: 'Chronic'
+        },
+        {
+            data: 'disabled_status',
+            name: 'disabled_status',
+            title: 'Disabled'
+        },
+        {
+            data: 'disabling_condition',
+            name: 'disabling_condition',
+            title: 'Disabling&nbsp;Condition'
+        },
+        {
+            data: 'household_status',
+            name: 'household_status',
+            title: 'Household'
+        },
+        {
+            data: 'veteran_status',
+            name: 'veteran_status',
+            title: 'Veteran'
+        },
+        {
+            data: 'housing_assessment_completed',
+            name: 'housing_assessment_completed',
+            title: 'Assessment'
+        },
+    ]
+});

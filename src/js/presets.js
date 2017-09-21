@@ -2,21 +2,21 @@ var presets = {
     "single": {
         "user_type_jail": null,
         "user_type_homeless": null,
-        "disabled": null,
-        "family_status": false,
-        "chronic": null,
-        "veteran": null,
+        "disabled_status": null,
+        "household_status": false,
+        "chronic_status": null,
+        "veteran_status": null,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
     },
-    "family": {
+    "household": {
         "user_type_jail": null,
         "user_type_homeless": null,
-        "disabled": null,
-        "family_status": true,
-        "chronic": null,
-        "veteran": null,
+        "disabled_status": null,
+        "household_status": true,
+        "chronic_status": null,
+        "veteran_status": null,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -24,10 +24,10 @@ var presets = {
     "veteran": {
         "user_type_jail": null,
         "user_type_homeless": null,
-        "disabled": null,
-        "family_status": null,
-        "chronic": null,
-        "veteran": true,
+        "disabled_status": null,
+        "household_status": null,
+        "chronic_status": null,
+        "veteran_status": true,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -35,10 +35,10 @@ var presets = {
     "youth": {
         "user_type_jail": null,
         "user_type_homeless": null,
-        "disabled": null,
-        "family_status": null,
-        "chronic": null,
-        "veteran": null,
+        "disabled_status": null,
+        "household_status": null,
+        "chronic_status": null,
+        "veteran_status": null,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -46,10 +46,10 @@ var presets = {
     "chronic": {
         "user_type_jail": null,
         "user_type_homeless": null,
-        "disabled": null,
-        "family_status": null,
-        "chronic": true,
-        "veteran": null,
+        "disabled_status": null,
+        "household_status": null,
+        "chronic_status": true,
+        "veteran_status": null,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -57,10 +57,10 @@ var presets = {
     "reset": {
         "user_type_jail": null,
         "user_type_homeless": null,
-        "disabled": null,
-        "family_status": null,
-        "chronic": null,
-        "veteran": null,
+        "disabled_status": null,
+        "household_status": null,
+        "chronic_status": null,
+        "veteran_status": null,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
