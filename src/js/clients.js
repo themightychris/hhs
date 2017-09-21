@@ -23,7 +23,16 @@ var clients = {
                 "race": 3,
                 "ethnicity": 0,
                 "gender": 0,
-                "sourceSystemId": "client_35965"
+                "sourceSystemId": "client_35965",
+                "userTypeJail": 1,
+                "userTypeHomeless": 2,
+                "viSpdat": 18,
+                "chronicHomeless": true,
+                "unshelteredHistory": false,
+                "familyStatus": false,
+                "veteran": true,
+                "disabled": false,
+                "disablingCondition": 'x'
             },
             {
                 "clientId": "5d4706f7-79ce-43c9-a6ab-04e6575d5e7d",
