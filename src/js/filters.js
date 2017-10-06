@@ -168,7 +168,7 @@ clientsDataTable.DataTable({
         {
             data: 'household_status',
             name: 'household_status',
-            title: 'Household'
+            title: 'Family'
         },
         {
             data: 'veteran_status',
