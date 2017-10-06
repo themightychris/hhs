@@ -5,7 +5,7 @@ var presets = {
         "disabled_status": null,
         "household_status": false,
         "chronic_status": null,
-        "veteran_status": null,
+        "veteran_status": false,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -16,7 +16,7 @@ var presets = {
         "disabled_status": null,
         "household_status": true,
         "chronic_status": null,
-        "veteran_status": null,
+        "veteran_status": false,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -38,7 +38,7 @@ var presets = {
         "disabled_status": null,
         "household_status": null,
         "chronic_status": null,
-        "veteran_status": null,
+        "veteran_status": false,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
@@ -49,7 +49,7 @@ var presets = {
         "disabled_status": null,
         "household_status": null,
         "chronic_status": true,
-        "veteran_status": null,
+        "veteran_status": false,
         "housing_status": null,
         "release_date_start": null,
         "release_date_end": null
