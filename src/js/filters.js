@@ -75,9 +75,9 @@ var checkConfig = function(form) {
 
 var booleanIcon = function(data, type, full, meta) {
     if (data === true || data === false) {
-        output = '<i class="fa text-muted fa-' + (data ? 'check' : 'circle-thin') + '"></i>';
+        output = '<i class="fa boolean-icon text-muted fa-' + (data ? 'check' : 'circle-thin') + '"></i>';
     } else {
-        output = '&mdash;'
+        output = '<span class="boolean-icon">&mdash;</span>'
     }
 
     return '<div class="text-center">' + output + '</div>';
@@ -89,9 +89,61 @@ var guidRenderer = function(data, type, full, meta) {
     }
 }
 
+var typeGauge = function(data, type, full, meta) {
+    if (data >= 1 && data <= 3) {
+        var diff = (3 - data),
+            string = '';
+
+        for (var i=0; i<data; i++) {
+            string += '<span class="type-gauge-pip-filled"></span>';
+        }
+        for (var i=0; i<diff; i++) {
+            string += '<span class="type-gauge-pip-empty"></span>';
+        }
+
+        return '<span class="type-gauge" data-toggle="tooltip" title="' + enums['userType'][data] + '">' + string + '</span><span class="sr-only">' + data + '</span>';
+    }
+
+    else {
+        return '<span class="type-gauge-empty">&mdash;</span>';
+    }
+}
+
 var clientsDataTable = $('#clients').one('draw.dt', function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
+
+// asc and desc sort functions to make sure non-integers are always ordered last
+
+$.fn.dataTable.ext.type.order['integer-asc'] = function(a, b) {
+    var nanA = isNaN(a),
+        nanB = isNaN(b);
+
+    if (nanA && nanB) {
+        return 0;
+    } else if (nanA) {
+        return 1;
+    } else if (nanB) {
+        return -1;
+    } else {
+        return a - b;
+    }
+}
+
+$.fn.dataTable.ext.type.order['integer-desc'] = function(a, b) {
+    var nanA = isNaN(a),
+        nanB = isNaN(b);
+
+    if (nanA && nanB) {
+        return 0;
+    } else if (nanA) {
+        return 1;
+    } else if (nanB) {
+        return -1;
+    } else {
+        return b - a;
+    }
+}
 
 clientsDataTable.DataTable({
     data: clients,
@@ -113,7 +165,16 @@ clientsDataTable.DataTable({
             render: guidRenderer
         },
         {
-            targets: [ 3, 4, 6, 7, 8, 10, 11, 12 ],
+            targets: [4, 6],
+            type: 'integer',
+            render: {
+                "display": typeGauge
+            }
+        },
+        {
+            targets: [ 3, 5, 8, 9, 10, 11, 12, 13 ],
+            orderable: false,
+            className: 'text-center',
             render: {
                 "display": booleanIcon,
             }
@@ -141,36 +202,37 @@ clientsDataTable.DataTable({
             title: 'Homeless'
         },
         {
+            data: 'user_type_hmis',
+            name: 'user_type_hmis',
+            title: 'Type'
+        },
+        {
             data: 'currently_incarcerated',
             name: 'currently_incarcerated',
             title: 'In&nbsp;Jail',
             className: 'text-nowrap'
         },
         {
+            data: 'user_type_cj',
+            name: 'user_type_cj',
+            title: 'Type'
+        },
+        {
             data: 'jail_release_date',
             name: 'jail_release_date',
-            title: 'Release Date',
-            className: 'text-nowrap'
+            title: 'Release',
+            className: 'text-nowrap text-center',
+            type: 'date'
         },
         {
             data: 'history_unsheltered',
             name: 'history_unsheltered',
-            title: 'History'
+            title: '<span data-toggle="tooltip" title="History of Homelessness">History</span>'
         },
         {
             data: 'chronic_status',
             name: 'chronic_status',
-            title: 'Chronic'
-        },
-        {
-            data: 'disabled_status',
-            name: 'disabled_status',
-            title: 'Disabled'
-        },
-        {
-            data: 'disabling_condition',
-            name: 'disabling_condition',
-            title: 'Disabling&nbsp;Condition'
+            title: '<span data-toggle="tooltip" title="Chronically Homeless">Chronic</span>'
         },
         {
             data: 'household_status',
@@ -185,7 +247,19 @@ clientsDataTable.DataTable({
         {
             data: 'housing_assessment_completed',
             name: 'housing_assessment_completed',
-            title: 'Assessment'
+            title: '<span data-toggle="tooltip" title="Assessment Completed">Assessed</span>'
         },
+        {
+            data: 'disabled_status',
+            name: 'disabled_status',
+            title: 'Disabled'
+        },
+        {
+            data: 'vi_spdat',
+            name: 'vi_spdat',
+            title: 'VI-SPDAT',
+            className: 'text-nowrap',
+            type: 'integer'
+        }
     ]
 });

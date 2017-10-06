@@ -1,0 +1,30 @@
+$type-gauge-color: #999;
+$type-gauge-size: 9px;
+
+th.sorting::after {
+    visibility: hidden; // hide when not activated
+}
+
+.type-gauge {
+    white-space: nowrap;
+}
+
+.type-gauge-pip-filled {
+    background-color: $type-gauge-color;
+    border: 1px solid #777;
+    border-radius: 2px;
+    display: inline-block;
+    height: $type-gauge-size;
+    margin-right: 2px;
+    width: $type-gauge-size;
+}
+
+.type-gauge-pip-empty {
+    @extend .type-gauge-pip-filled;
+    background-color: transparent;
+    // border-color: $type-gauge-color;
+}
+
+.type-gauge-empty {
+    margin-left: (2em/3);
+}

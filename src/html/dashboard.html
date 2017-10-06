@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" />
 		<link rel="stylesheet" href="https://cdn.datatables.net/v/bs/dt-1.10.16/b-1.4.2/b-html5-1.4.2/datatables.min.css"/>
 
-		<title>Dashboard</title>
+		<title>Client Tracking Tool</title>
 
 		<link rel="stylesheet" href="../css/styles.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 				<span>Hello, name</span>
 				<button class="btn btn-sm btn-default">Log out</button>
 			</div>
-			<h1>Jail: Client Tracking Tool</h1>
+			<h1>Client Tracking Tool</h1>
 		</header>
 
 		<section class="container" id="filters">
@@ -36,21 +36,21 @@
 				<form class="row">
 					<div class="col-md-2">
 						<div class="form-group">
-							<label class="control-label" for="user_type_jail">User type jail</label>
-							<select class="form-control" name="user_type_jail" id="user_type_jail">
-								<option disabled selected></option>
-								<option value="medium_heavy">Medium to Heavy</option>
-								<option value="frequent">Frequent</option>
-								<option value="super">Super</option>
+							<label class="control-label" for="user_type_cj">User type jail</label>
+							<select class="form-control" name="user_type_cj" id="user_type_jail">
+								<option selected value="">Any</option>
+								<option value="1">Medium to Heavy</option>
+								<option value="2">Frequent</option>
+								<option value="3">Super</option>
 							</select>
 						</div>
 						<div class="form-group">
-							<label class="control-label" for="user_type_homeless">User type homeless</label>
-							<select class="form-control" name="user_type_homeless" id="user_type_homeless">
-								<option disabled selected></option>
-								<option value="medium_heavy">Medium to Heavy</option>
-								<option value="frequent">Frequent</option>
-								<option value="super">Super</option>
+							<label class="control-label" for="user_type_hmis">User type homeless</label>
+							<select class="form-control" name="user_type_hmis" id="user_type_homeless">
+								<option selected value="">Any</option>
+								<option value="1">Medium to Heavy</option>
+								<option value="2">Frequent</option>
+								<option value="3">Super</option>
 							</select>
 						</div>
 					</div>
@@ -146,19 +146,19 @@
 								<div class="checkbox">
 									<label>
 										<input name="housing_status" type="checkbox" value="has_used_shelter">
-										Has used shelter
+										Has used shelter past 30 days
 									</label>
 								</div>
 								<div class="checkbox">
 									<label>
-										<input name="housing_status" type="checkbox" value="history_unsheltered">
+										<input name="history_unsheltered" type="checkbox" value="true">
 										History of unsheltered homelessness
 									</label>
 								</div>
 								<div class="checkbox">
 									<label>
-										<input name="housing_status" type="checkbox" value="has_used_programs">
-										Has used housing programs
+										<input name="currently_homeless_shelter" type="checkbox" value="true">
+										Currently homeless
 									</label>
 								</div>
 							</div>
