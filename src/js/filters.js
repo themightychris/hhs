@@ -146,13 +146,13 @@ $.fn.dataTable.ext.type.order['integer-desc'] = function(a, b) {
 }
 
 clientsDataTable.DataTable({
+    autoWidth: false,
     data: clients,
     buttons: [ 'csv' ],
     dom: [
-        "<'row'<'col-sm-6'l><'col-sm-6'f>>",
+        "<'row text-muted'<'col-sm-6'i><'col-sm-6 text-right'l>>",
         "<'row'<'col-sm-12'tr>>",
-        "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-        "B"
+        "<'row'<'col-sm-5'B><'col-sm-7'p>>"
     ].join(''),
     columnDefs: [
         {
@@ -262,4 +262,10 @@ clientsDataTable.DataTable({
             type: 'integer'
         }
     ]
+});
+
+// wire up search field (since not using DataTables built-in)
+
+$('#q').on('input', function() {
+    clientsDataTable.DataTable().search($(this).val()).draw();
 });

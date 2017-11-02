@@ -1,3 +1,8 @@
+body {
+	overflow: scroll; // always show scrollbar, to prevent jumping content in filtered views
+	padding-bottom: 10vh;
+}
+
 header {
 	.login {
 		margin-top: 2em;
@@ -8,7 +13,10 @@ header {
 	}
 }
 
-#filters {
+.filters-ct {
+	margin-bottom: 20px;
+	margin-top: 20px;
+
 	.btn-group {
 		margin-bottom: 20px;
 	}
@@ -39,13 +47,3 @@ header {
 		border-color: #ddd;
 	}
 }
-
-// .row {
-// 	background-color: rgba(red, .1);
-// 	outline: 1px solid red;
-// }
-
-// [class*="col"] {
-// 	background-color: rgba(blue, .1);
-// 	outline: 1px solid blue;
-// }
