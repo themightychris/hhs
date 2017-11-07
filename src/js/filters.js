@@ -109,6 +109,16 @@ var typeGauge = function(data, type, full, meta) {
     }
 }
 
+var dateRenderer = function(data, type, full, meta) {
+    var date;
+    if (data) {
+        date = new Date(data);
+        return date.toLocaleDateString();
+    }
+
+    return data;
+}
+
 var clientsDataTable = $('#clients').one('draw.dt', function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
@@ -147,6 +157,7 @@ $.fn.dataTable.ext.type.order['integer-desc'] = function(a, b) {
 
 clientsDataTable.DataTable({
     autoWidth: false,
+    // paging: false,
     data: clients,
     buttons: [ 'csv' ],
     dom: [
@@ -162,7 +173,7 @@ clientsDataTable.DataTable({
         },
         {
             targets: [0, 1],
-            render: guidRenderer
+            // render: guidRenderer
         },
         {
             targets: [4, 6],
@@ -177,6 +188,13 @@ clientsDataTable.DataTable({
             className: 'text-center',
             render: {
                 "display": booleanIcon,
+            }
+        },
+        {
+            targets: [8],
+            orderable: true,
+            render: {
+                display: dateRenderer
             }
         }
     ],
@@ -194,7 +212,7 @@ clientsDataTable.DataTable({
         {
             data: 'name',
             name: 'name',
-            title: 'Name'
+            title: 'Full Name'
         },
         {
             data: 'currently_homeless_shelter',
@@ -236,7 +254,7 @@ clientsDataTable.DataTable({
         },
         {
             data: 'household_status',
-            name: 'household_status',
+            name: 'family_status',
             title: 'Family'
         },
         {
