@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" />
+		<link rel="stylesheet" href="https://cdn.datatables.net/v/bs/dt-1.10.16/b-1.4.2/b-html5-1.4.2/datatables.min.css"/>
+
+		<title>Client Tracking Tool</title>
+
+		<link rel="stylesheet" href="../css/styles.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<header class="container-fluid">
+			<div class="pull-right login">
+				<span>Hello, name</span>
+				<button class="btn btn-sm btn-default">Log out</button>
+			</div>
+			<h1>Client Tracking Tool</h1>
+		</header>
+
+		<section class="container filters-ct">
+			<div class="well">
+				<div class="d-flex align-center">
+					<input id="q" name="q" class="form-control" aria-label="Search" placeholder="Search">
+
+					<div class="ml-2">
+						<button type="button"
+							class="btn btn-primary"
+							data-toggle="collapse"
+							data-target="#filters"
+							aria-expanded="false"
+							aria-controls="filters">
+								<i class="fa fa-filter"></i>&nbsp;&nbsp;Filters</span>
+						</button>
+					</div>
+				</div>
+
+				<div id="filters" class="collapse">
+
+					<hr>
+
+					<div class="btn-group btn-group-flex" role="group" id="filter-buttons" aria-label="Filters">
+						<button type="button" class="btn btn-default" data-preset="single">Single</button>
+						<button type="button" class="btn btn-default" data-preset="family">Family</button>
+						<button type="button" class="btn btn-default" data-preset="veteran">Veteran</button>
+						<button type="button" class="btn btn-default" data-preset="youth">Youth</button>
+						<button type="button" class="btn btn-default" data-preset="chronic">Chronic</button>
+						<button type="button" class="btn btn-default" data-preset="reset">Reset</button>
+					</div>
+
+
+
+					<form class="row">
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="control-label" for="user_type_cj">User type jail</label>
+								<select class="form-control" name="user_type_cj" id="user_type_jail">
+									<option selected value="">Any</option>
+									<option value="1">Medium to Heavy</option>
+									<option value="2">Frequent</option>
+									<option value="3">Super</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="user_type_hmis">User type homeless</label>
+								<select class="form-control" name="user_type_hmis" id="user_type_homeless">
+									<option selected value="">Any</option>
+									<option value="1">Medium to Heavy</option>
+									<option value="2">Frequent</option>
+									<option value="3">Super</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-5">
+							<div class="row">
+								<div class="form-group col-md-6">
+									<div class="row">
+										<label class="control-label col-md-8">Disabled:</label>
+										<div class="col-md-4">
+											<div class="radio">
+												<label>
+													<input name="disabled_status" type="radio" value="true">
+													Yes
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input name="disabled_status" type="radio" value="false">
+													No
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<div class="row">
+										<label class="control-label col-md-6">Chronic:</label>
+										<div class="col-md-6">
+											<div class="radio">
+												<label>
+													<input name="chronic_status" type="radio" value="true">
+													Yes
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input name="chronic_status" type="radio" value="false">
+													No
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<div class="row">
+										<label class="control-label col-md-8">Family:</label>
+										<div class="col-md-4">
+											<div class="radio">
+												<label>
+													<input name="family_status" type="radio" value="true">
+													Yes
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input name="family_status" type="radio" value="false">
+													No
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<div class="row">
+										<label class="control-label col-md-6">Veteran:</label>
+										<div class="col-md-6">
+											<div class="radio">
+												<label>
+													<input name="veteran_status" type="radio" value="true">
+													Yes
+												</label>
+											</div>
+											<div class="radio">
+												<label>
+													<input name="veteran_status" type="radio" value="false">
+													No
+												</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+										<div class="row">
+											<label class="control-label col-md-8">Youth:</label>
+											<div class="col-md-4">
+												<div class="radio">
+													<label>
+														<input name="youth_status" type="radio" value="true">
+														Yes
+													</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input name="youth_status" type="radio" value="false">
+														No
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+
+						<div class="col-md-5">
+							<div class="form-group row">
+								<label class="control-label col-md-3">Housing status:</label>
+								<div class="col-md-9">
+									<div class="checkbox">
+										<label>
+											<input name="housing_status" type="checkbox" value="has_used_shelter">
+											Recently homeless (used shelter in last 30 days)
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input name="history_unsheltered" type="checkbox" value="true">
+											History of unsheltered homelessness
+										</label>
+									</div>
+									<div class="checkbox">
+										<label>
+											<input name="currently_homeless_shelter" type="checkbox" value="true">
+											Currently homeless
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="control-label col-md-3">Release date</label>
+								<div class="col-md-9">
+									<div class="input-daterange input-group col-md-9" id="datepicker">
+										<input type="text" class="form-control" name="release_date_start" />
+										<span class="input-group-addon">to</span>
+										<input type="text" class="form-control" name="release_date_end" />
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<section class="container-fluid">
+			<div class="table-responsive">
+				<table class="table table-striped" id="clients"></table>
+			</div>
+		</section>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+		<script src="https://use.fontawesome.com/149b42cf31.js"></script>
+
+		<script src="https://cdn.datatables.net/v/bs/dt-1.10.16/b-1.4.2/b-html5-1.4.2/datatables.min.js"></script>
+
+		<script src="../js/main.js"></script>
+	</body>
+
+</html>

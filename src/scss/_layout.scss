@@ -1,0 +1,49 @@
+body {
+	overflow: scroll; // always show scrollbar, to prevent jumping content in filtered views
+	padding-bottom: 10vh;
+}
+
+header {
+	.login {
+		margin-top: 2em;
+
+		span {
+			margin-right: 15px;
+		}
+	}
+}
+
+.filters-ct {
+	margin-bottom: 20px;
+	margin-top: 20px;
+
+	.btn-group {
+		margin-bottom: 20px;
+	}
+
+	.control-label {
+		margin-top: 7px;
+		padding: 0;
+		text-align: right;
+	}
+
+	.radio,
+	.checkbox {
+		margin-top: 7px;
+
+		.control-label {
+			margin-top: 10px;
+		}
+
+		+ .radio,
+		+ .checkbox {
+			margin-top: -1px;
+		}
+	}
+}
+
+.well {
+	hr {
+		border-color: #ddd;
+	}
+}
