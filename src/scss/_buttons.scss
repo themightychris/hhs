@@ -1,8 +1,0 @@
-.btn-group-flex { // bootstrap's -justified doesn't work with <button>
-    align-items: center;
-    display: flex;
-
-    .btn {
-        flex: 1;
-    }
-}
