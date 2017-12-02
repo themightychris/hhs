@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# exit if any command fails and start from main project directory
+set -e
+cd "$(dirname "$0")/.."
+
+# ensure dependencies are all available
+script/bootstrap
+
+echo "==> Initializing .env…"
+cp -v sample.env .env
+
+echo "==> Loading static demo data…"
+cp -v static/client-enrollments-dev.json static/client-enrollments.json

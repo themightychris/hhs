@@ -1,28 +1,38 @@
-### Setup
+# OpenHousing/hhs
 
-Requires node 8.x.
+## Requirements
 
-Install dependencies:
+- node 8.x.
 
-```
-npm install
-```
+## Scripts to Rule Them All
 
-Copy `sample.env` to `.env` and customize
+This project follows the [Scripts to Rule Them All](https://githubengineering.com/scripts-to-rule-them-all/) pattern:
+
+- `script/bootstrap` - installs/updates all dependencies
+- `script/setup` - sets up a project to be used for the first time
+- `script/update` - updates a project to run at its current version
+- `script/server` - starts app
+
+## Getting started
+
+To initialize or reset your environment, run:
+
 ```bash
-cp sample.env .env
+script/setup
+````
+
+**This command may destroy configuration and data**
+
+## Running the server
+
+To start the web server, run:
+
+```bash
+script/server
 ```
 
-run `node generate-clients` for data loaded from HMISLynk, this may take awhile.
-
-Alternatively, load use `cp static/client-enrollments-dev.json static/client-enrollments.json` to use the predefined static data for demo purposes.
-
-Run:
-
-```
-node index.js
-```
+## Accessing the application
 
 Navigate to http://localhost:3000
 
-You will be prompted to login, contact kclough@jarv.us for credentials. Once logged in, you should see client data. 
+You will be prompted to login, contact kclough@jarv.us for credentials. Once logged in, you should see client data.
